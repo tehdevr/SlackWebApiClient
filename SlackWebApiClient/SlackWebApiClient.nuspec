@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SethCoussens.Slack.SlackWebApiClient</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Seth Coussens</authors>
+    <owners>Seth Coussens</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A C# Library for interacting with the Slack Web API.</description>
+    <releaseNotes>Initial release, with limited functionality. Currently supports lists for groups, mpim, im, and channels. Can also retrieve channel history for same group types. Able to retreive individual user information and update chat messages as well.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>slack web api webapi slackapi</tags>
+  </metadata>
+</package>
