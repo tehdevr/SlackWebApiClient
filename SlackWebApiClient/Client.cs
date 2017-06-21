@@ -17,6 +17,9 @@ namespace SlackWebApiClient
             _url = apiUrl;
         }
 
+        /*
+         * List Operations
+         */
         public async Task<ChannelsResponse> GetChannelsList()
         {
             var url = $"{_url}/channels.list";
@@ -62,19 +65,9 @@ namespace SlackWebApiClient
             return await Post<MpimsResponse>(url, body);
         }
 
-        public async Task<UserResponse> GetUser(string user)
-        {
-            var url = $"{_url}/users.info";
-
-            var body = new Dictionary<string, string>
-            {
-                {"token", _token },
-                {"user", user }
-            };
-
-            return await Post<UserResponse>(url, body);
-        }
-
+        /*
+         * Array Operations
+         */
         public async Task<MessagesResponse> GetImMessages(
             string channel,
             string ts = null,
@@ -107,8 +100,8 @@ namespace SlackWebApiClient
             string channel,
             string ts = null,
             string latest = null,
-            string oldest = null, 
-            int? count = null, 
+            string oldest = null,
+            int? count = null,
             bool inclusive = false,
             bool unreads = false)
         {
@@ -117,7 +110,7 @@ namespace SlackWebApiClient
             return await GetMessages<MessagesResponse>(endpoint, channel, ts, latest, oldest, count, inclusive, unreads);
         }
 
-        public async Task<T> GetMessages<T>(
+        private async Task<T> GetMessages<T>(
             string endpointUrl,
             string channel,
             string ts = null,
@@ -144,7 +137,115 @@ namespace SlackWebApiClient
             return await Post<T>(url, body);
         }
 
-        public async Task<Response> UpdateMessage(string channel, string ts, string text, IList<Attachment> attachments)
+        /*
+         * Entity Operations
+         */
+        public async Task<UserResponse> GetUser(string user)
+        {
+            var url = $"{_url}/users.info";
+
+            var body = new Dictionary<string, string> { 
+                {"token", _token },
+                {"user", user }
+            };
+
+            return await Post<UserResponse>(url, body);
+        }
+
+        public async Task<PresenceResponse> GetUserPresence(string user)
+        {
+            var url = $"{_url}/users.getPresence";
+
+            var body = new Dictionary<string, string> {
+                {"token", _token },
+                {"user", user }
+            };
+
+            return await Post<PresenceResponse>(url, body);
+        }
+
+        public async Task<ChannelReponse> GetChannel(string channel)
+        {
+            var url = $"{_url}/channels.info";
+
+            var body = new Dictionary<string, string>
+            {
+                {"token", _token},
+                { "channel", channel}
+            };
+
+            return await Post<ChannelReponse>(url, body);
+        }
+
+        public async Task<GroupResponse> GetGroup(string group)
+        {
+            var url = $"{_url}/groups.info";
+
+            var body = new Dictionary<string, string>
+            {
+                {"token", _token},
+                { "channel", group}
+            };
+
+            return await Post<GroupResponse>(url, body);
+        }
+
+        /*
+         * Write Operations
+         */
+        public async Task<MessageResponse> PostMessage(
+            string channel, 
+            string text, 
+            string parse = "none", 
+            bool? linkNames = null,
+            IList<Attachment> attachments = null,
+            bool? unfurlLinks = null, 
+            bool? unfurlMedia = null, 
+            string username = null, 
+            bool? asUser = null, 
+            string iconUrl = null, 
+            string iconEmoji = null, 
+            string threadTs = null, 
+            bool? replyBroadcast = null )
+        {
+            var url = $"{_url}/chat.postMessage";
+
+            var body = new Dictionary<string, string> {
+                { "token", _token },
+                { "channel", channel},
+                { "text", text}
+            };
+
+            if (parse != null) body.Add("parse", parse);
+            if (linkNames != null) body.Add("link_names", linkNames.ToString());
+            if (attachments != null) body.Add("attachments", JsonConvert.SerializeObject(attachments));
+            if (unfurlLinks != null) body.Add("unfurl_links", unfurlLinks.ToString());
+            if (unfurlMedia != null) body.Add("unfurl_media", unfurlMedia.ToString() );
+            if (username != null) body.Add("username", username);
+            if (asUser != null) body.Add("as_user", asUser.ToString());
+            if (iconUrl != null) body.Add("icon_url", iconUrl);
+            if (iconEmoji != null) body.Add("icon_emoji", iconEmoji);
+            if (threadTs != null) body.Add("thread_ts", threadTs);
+            if (replyBroadcast != null) body.Add("reply_broadcast", replyBroadcast.ToString());
+
+            return await Post<MessageResponse>(url, body);
+        }
+        
+        public async Task<MessageResponse> UpdateMessage(
+            string channel,
+            string ts,
+            string text,
+            string parse = "none",
+            bool? linkNames = null,
+            IList<Attachment> attachments = null,
+            bool? unfurlLinks = null,
+            bool? unfurlMedia = null,
+            string username = null,
+            bool? asUser = null,
+            string iconUrl = null,
+            string iconEmoji = null,
+            string threadTs = null,
+            bool? replyBroadcast = null)
         {
             var url = $"{_url}/chat.update";
 
@@ -155,11 +256,24 @@ namespace SlackWebApiClient
                 { "text", text}
             };
 
-            if(attachments != null) body.Add("attachments", JsonConvert.SerializeObject(attachments));
+            if (parse != null) body.Add("parse", parse);
+            if (linkNames != null) body.Add("link_names", linkNames.ToString());
+            if (attachments != null) body.Add("attachments", JsonConvert.SerializeObject(attachments));
+            if (unfurlLinks != null) body.Add("unfurl_links", unfurlLinks.ToString());
+            if (unfurlMedia != null) body.Add("unfurl_media", unfurlMedia.ToString());
+            if (username != null) body.Add("username", username);
+            if (asUser != null) body.Add("as_user", asUser.ToString());
+            if (iconUrl != null) body.Add("icon_url", iconUrl);
+            if (iconEmoji != null) body.Add("icon_emoji", iconEmoji);
+            if (threadTs != null) body.Add("thread_ts", threadTs);
+            if (replyBroadcast != null) body.Add("reply_broadcast", replyBroadcast.ToString());
 
-            return await Post<Response>(url, body);
+            return await Post<MessageResponse>(url, body);
         }
 
+        /*
+         * Helper functions
+         */
         private static async Task<T> Post<T>(string url, Dictionary<string, string> content = null) where T : Response
         {
             using (var client = new HttpClient())
