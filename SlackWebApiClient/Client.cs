@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using SlackWebApiClient.Models;
@@ -193,6 +194,84 @@ namespace SlackWebApiClient
         /*
          * Write Operations
          */
+        public class Channels
+        {
+            private readonly string _token;
+            private readonly string _url;
+
+            public Channels(string token, string url)
+            {
+                _token = token;
+                _url = url;
+            }
+
+            public async Task<ChannelReponse> Invite(
+            string channel,
+            string user)
+            {
+                var url = $"{_url}/channels.invite";
+
+                var body = new Dictionary<string, string>
+            {
+                { "token", _token },
+                { "channel", channel },
+                { "user", user }
+            };
+
+                return await Post<ChannelReponse>(url, body);
+            }
+        }
+
+        public class Chat
+        {
+            private readonly string _token;
+            private readonly string _url;
+
+            public Chat(string token, string url)
+            {
+                _token = token;
+                _url = url;
+            }
+
+            public async Task<MessageResponse> PostMessage(
+                string channel,
+                string text,
+                string parse = "none",
+                bool? linkNames = null,
+                IList<Attachment> attachments = null,
+                bool? unfurlLinks = null,
+                bool? unfurlMedia = null,
+                string username = null,
+                bool? asUser = null,
+                string iconUrl = null,
+                string iconEmoji = null,
+                string threadTs = null,
+                bool? replyBroadcast = null)
+            {
+                var url = $"{_url}/chat.postMessage";
+
+                var body = new Dictionary<string, string> {
+                    { "token", _token },
+                    { "channel", channel},
+                    { "text", text}
+                };
+
+                if (parse != null) body.Add("parse", parse);
+                if (linkNames != null) body.Add("link_names", linkNames.ToString());
+                if (attachments != null) body.Add("attachments", JsonConvert.SerializeObject(attachments));
+                if (unfurlLinks != null) body.Add("unfurl_links", unfurlLinks.ToString());
+                if (unfurlMedia != null) body.Add("unfurl_media", unfurlMedia.ToString());
+                if (username != null) body.Add("username", username);
+                if (asUser != null) body.Add("as_user", asUser.ToString());
+                if (iconUrl != null) body.Add("icon_url", iconUrl);
+                if (iconEmoji != null) body.Add("icon_emoji", iconEmoji);
+                if (threadTs != null) body.Add("thread_ts", threadTs);
+                if (replyBroadcast != null) body.Add("reply_broadcast", replyBroadcast.ToString());
+
+                return await Post<MessageResponse>(url, body);
+            }
+        }
+
         public async Task<MessageResponse> PostMessage(
             string channel, 
             string text, 
