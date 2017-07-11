@@ -21,18 +21,6 @@ namespace SlackWebApiClient.Models
         public bool IsMember { get; set; }
 
         [JsonProperty("members")]
-        public IList<string> Members { get; set; } 
-    }
-
-    public class ChannelsResponse : Response
-    {
-        [JsonProperty("channels")]
-        public IList<Channel> Channels { get; set; }
-    }
-
-    public class ChannelReponse : Response
-    {
-        [JsonProperty("channel")]
-        public Channel Channel { get; set; }
+        public IList<string> Members { get; set; }
     }
 }

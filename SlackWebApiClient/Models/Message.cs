@@ -36,36 +36,6 @@ namespace SlackWebApiClient.Models
         public int ReplyCount { get; set; }
 
         [JsonIgnore]
-        public bool IsParent => (ThreadTs == Ts);
-    }
-
-    public class MessageResponse : Response
-    {
-        [JsonProperty("ts")]
-        public string Ts { get; set; }
-
-        [JsonProperty("channel")]
-        public string Channel { get; set; }
-
-        [JsonProperty("messages")]
-        public Message Message { get; set; }
-    }
-
-    public class MessagesResponse : Response
-    {
-        [JsonProperty("latest")]
-        public string Latest { get; set; }
-
-        [JsonProperty("messages")]
-        public IList<Message> Messages { get; set; }
-
-        [JsonProperty("has_more")]
-        public bool HasMore { get; set; }
-    }
-
-    public class MessageReply
-    {
-        public string User { get; set; }
-        public string Ts { get; set; }
+        public bool IsParent => ThreadTs == Ts;
     }
 }
