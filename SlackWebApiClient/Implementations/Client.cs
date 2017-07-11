@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SlackWebApiClient.Interfaces;
 using SlackWebApiClient.Models;
 
 namespace SlackWebApiClient.Implementations
 {
-    public class Client
+    public class Client : IClient
     {
         private readonly string _apiUrl;
         private readonly string _token;
@@ -49,12 +51,17 @@ namespace SlackWebApiClient.Implementations
             if (content != null) content.Add("token", _token);
             else content = new Dictionary<string, string> {{"token", _token}};
 
+            T result;
             using (var client = new HttpClient())
             {
                 var response = await client.PostAsync(url, new FormUrlEncodedContent(content));
 
-                return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
+                result = JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
             }
+
+            if(result.Error != null) throw new Exception(result.Error);
+
+            return result;
         }
     }
 }

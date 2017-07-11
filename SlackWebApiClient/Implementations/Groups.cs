@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SlackWebApiClient.Interfaces;
 using SlackWebApiClient.Models;
 
 namespace SlackWebApiClient.Implementations
 {
-    public class Groups
+    public class Groups : IGroups
     {
         private readonly Client _client;
 

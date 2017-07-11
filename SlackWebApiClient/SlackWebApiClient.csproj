@@ -47,8 +47,15 @@
     <Compile Include="Implementations\Channels.cs" />
     <Compile Include="Implementations\Chat.cs" />
     <Compile Include="Implementations\Groups.cs" />
+    <Compile Include="Interfaces\IChannels.cs" />
+    <Compile Include="Interfaces\IChat.cs" />
+    <Compile Include="Interfaces\IClient.cs" />
+    <Compile Include="Interfaces\IGroups.cs" />
+    <Compile Include="Interfaces\IIm.cs" />
     <Compile Include="Implementations\Im.cs" />
     <Compile Include="Implementations\Client.cs" />
+    <Compile Include="Interfaces\IMpim.cs" />
+    <Compile Include="Interfaces\IUsers.cs" />
     <Compile Include="Models\ChannelReponse.cs" />
     <Compile Include="Models\ChannelsResponse.cs" />
     <Compile Include="Models\GroupResponse.cs" />
@@ -80,9 +87,7 @@
     <None Include="packages.config" />
     <None Include="SlackWebApiClient.nuspec" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SlackWebApiClient.Interfaces;
 using SlackWebApiClient.Models;
 
 namespace SlackWebApiClient.Implementations
 {
-    public class Chat
+    public class Chat : IChat
     {
         private readonly Client _client;
 

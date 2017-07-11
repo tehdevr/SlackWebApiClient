@@ -1,9 +1,10 @@
 using System.Threading.Tasks;
+using SlackWebApiClient.Interfaces;
 using SlackWebApiClient.Models;
 
 namespace SlackWebApiClient.Implementations
 {
-    public class Im
+    public class Im : IIm
     {
         private readonly Client _client;
 
