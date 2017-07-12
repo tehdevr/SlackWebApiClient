@@ -1,23 +1,23 @@
 using System.Threading.Tasks;
-using SlackWebApiClient.Interfaces;
+using SlackWebApiClient.Interfaces.Methods;
 using SlackWebApiClient.Models;
 
-namespace SlackWebApiClient.Implementations
+namespace SlackWebApiClient.Methods
 {
-    public class Mpim : IMpim
+    public class Im : IIm
     {
         private readonly Client _client;
 
-        public Mpim(Client client)
+        public Im(Client client)
         {
             _client = client;
         }
 
-        public async Task<MpimsResponse> List()
+        public async Task<ImsResponse> List()
         {
-            var endpoint = $"mpim.list";
+            var endpoint = $"im.list";
 
-            return await _client.Post<MpimsResponse>(endpoint);
+            return await _client.Post<ImsResponse>(endpoint);
         }
 
         public async Task<MessagesResponse> Messages(
@@ -29,7 +29,7 @@ namespace SlackWebApiClient.Implementations
             bool inclusive = false,
             bool unreads = false)
         {
-            var endpoint = $"mpim.history";
+            var endpoint = $"im.history";
 
             return await _client.GetMessages<MessagesResponse>(endpoint, channel, ts, latest, oldest, count, inclusive,
                 unreads);

@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using SlackWebApiClient.Interfaces;
+using SlackWebApiClient.Interfaces.Methods;
+using SlackWebApiClient.Interfaces.Models;
 using SlackWebApiClient.Models;
 
-namespace SlackWebApiClient.Implementations
+namespace SlackWebApiClient.Methods
 {
     public class Chat : IChat
     {
@@ -90,6 +91,34 @@ namespace SlackWebApiClient.Implementations
             if (iconEmoji != null) body.Add("icon_emoji", iconEmoji);
             if (threadTs != null) body.Add("thread_ts", threadTs);
             if (replyBroadcast != null) body.Add("reply_broadcast", replyBroadcast.ToString());
+
+            return await _client.Post<MessageResponse>(endpoint, body);
+        }
+
+        public async Task<MessageResponse> Delete(string channel, string ts, bool? asUser = null)
+        {
+            const string endpoint = "chat.delete";
+
+            var body = new Dictionary<string, string>
+            {
+                { "channel", channel },
+                { "ts", ts }
+            };
+
+            if(asUser != null) body.Add("as_user", asUser.ToString());
+
+            return await _client.Post<MessageResponse>(endpoint, body);
+        }
+
+        public async Task<MessageResponse> MeMessage(string channel, string text)
+        {
+            const string endpoint = "chat.meMessage";
+
+            var body = new Dictionary<string, string>
+            {
+                { "channel", channel },
+                { "text", text }
+            };
 
             return await _client.Post<MessageResponse>(endpoint, body);
         }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using SlackWebApiClient.Interfaces;
+using SlackWebApiClient.Interfaces.Methods;
 using SlackWebApiClient.Models;
 
-namespace SlackWebApiClient.Implementations
+namespace SlackWebApiClient.Methods
 {
     public class Client : IClient
     {

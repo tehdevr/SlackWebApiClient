@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using SlackWebApiClient.Models;
 
-namespace SlackWebApiClient.Interfaces
+namespace SlackWebApiClient.Interfaces.Methods
 {
     public interface IClient
     {

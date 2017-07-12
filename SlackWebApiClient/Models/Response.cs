@@ -1,8 +1,9 @@
 using Newtonsoft.Json;
+using SlackWebApiClient.Interfaces.Models;
 
 namespace SlackWebApiClient.Models
 {
-    public class Response
+    public class Response : IResponse
     {
         [JsonProperty("ok")]
         public bool Ok { get; set; }

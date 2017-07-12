@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using SlackWebApiClient.Interfaces;
+using SlackWebApiClient.Interfaces.Methods;
 using SlackWebApiClient.Models;
 
-namespace SlackWebApiClient.Implementations
+namespace SlackWebApiClient.Methods
 {
     public class Users : IUsers
     {

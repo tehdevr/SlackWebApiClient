@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using SlackWebApiClient.Interfaces.Models;
 
 namespace SlackWebApiClient.Models
 {

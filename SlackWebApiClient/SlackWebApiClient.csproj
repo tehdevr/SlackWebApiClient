@@ -44,19 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementations\Channels.cs" />
-    <Compile Include="Implementations\Chat.cs" />
-    <Compile Include="Implementations\Groups.cs" />
-    <Compile Include="Interfaces\IChannels.cs" />
-    <Compile Include="Interfaces\IChat.cs" />
-    <Compile Include="Interfaces\IClient.cs" />
-    <Compile Include="Interfaces\IGroups.cs" />
-    <Compile Include="Interfaces\IIm.cs" />
-    <Compile Include="Implementations\Im.cs" />
-    <Compile Include="Implementations\Client.cs" />
-    <Compile Include="Interfaces\IMpim.cs" />
-    <Compile Include="Interfaces\IUsers.cs" />
-    <Compile Include="Models\ChannelReponse.cs" />
+    <Compile Include="Methods\Channels.cs" />
+    <Compile Include="Methods\Chat.cs" />
+    <Compile Include="Methods\Groups.cs" />
+    <Compile Include="Methods\Im.cs" />
+    <Compile Include="Methods\Client.cs" />
+    <Compile Include="Interfaces\Methods\IChannels.cs" />
+    <Compile Include="Interfaces\Methods\IChat.cs" />
+    <Compile Include="Interfaces\Methods\IClient.cs" />
+    <Compile Include="Interfaces\Methods\IGroups.cs" />
+    <Compile Include="Interfaces\Methods\IIm.cs" />
+    <Compile Include="Interfaces\Methods\IMpim.cs" />
+    <Compile Include="Interfaces\Methods\IUsers.cs" />
+    <Compile Include="Interfaces\Models\IResponse.cs" />
+    <Compile Include="Models\ChannelResponse.cs" />
     <Compile Include="Models\ChannelsResponse.cs" />
     <Compile Include="Models\GroupResponse.cs" />
     <Compile Include="Models\GroupsResponse.cs" />
@@ -68,7 +69,7 @@
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\UserResponse.cs" />
     <Compile Include="Models\UsersResponse.cs" />
-    <Compile Include="Implementations\Mpim.cs" />
+    <Compile Include="Methods\Mpim.cs" />
     <Compile Include="SlackApi.cs" />
     <Compile Include="Models\Attachment.cs" />
     <Compile Include="Models\Channel.cs" />
@@ -81,7 +82,7 @@
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Implementations\Users.cs" />
+    <Compile Include="Methods\Users.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

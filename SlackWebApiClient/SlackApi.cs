@@ -1,4 +1,4 @@
-﻿using SlackWebApiClient.Implementations;
+﻿using SlackWebApiClient.Methods;
 
 namespace SlackWebApiClient
 {
