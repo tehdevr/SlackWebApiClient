@@ -1,30 +1,38 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using SlackWebApiClient;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json.Linq;
 
 namespace SlackWebApiClient.Tests
 {
     [TestClass]
     public class ClientTests
     {
-        private const string Token = "";
-        private const string Url = "https://slack.com/api";
+        private readonly string _token;
+        private readonly string _url = "https://slack.com/api";
+
+        public ClientTests()
+        {
+            JObject o1 = JObject.Parse(File.ReadAllText("config.json"));
+            _token = o1.GetValue("SlackApiToken").ToString();
+        }
 
         [TestMethod]
         public void CreateClient_ReturnsClient()
         {
-            var api = new SlackApi(Token);
+            var api = new SlackApi(_token);
             
             Assert.IsNotNull(api, "api != null");
-            Assert.AreEqual(api.Token, Token);
-            Assert.AreEqual(api.Url, Url);
+            Assert.AreEqual(api.Token, _token);
+            Assert.AreEqual(api.Url, _url);
         }
 
         [TestMethod]
         public async Task GetChannelsList_ReturnsList()
         {
-            var api = new SlackApi(Token);
+            var api = new SlackApi(_token);
 
             var channels = await api.Channels.List();
 
@@ -36,7 +44,7 @@ namespace SlackWebApiClient.Tests
         [TestMethod]
         public async Task GetChannelsInfo_ReturnsInfo()
         {
-            var api = new SlackApi(Token);
+            var api = new SlackApi(_token);
 
             var channel = await api.Channels.Info("C03K226LE");
 
@@ -50,7 +58,7 @@ namespace SlackWebApiClient.Tests
         [TestMethod]
         public async Task GetGroupsInfo_ReturnsInfo()
         {
-            var api = new SlackApi(Token);
+            var api = new SlackApi(_token);
 
             var channel = await api.Groups.Info("G151SK5PB");
 
