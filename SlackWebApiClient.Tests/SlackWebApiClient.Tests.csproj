@@ -59,6 +59,10 @@
       <Name>SlackWebApiClient</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="config.json" />
+    <None Include="config.example.json" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
