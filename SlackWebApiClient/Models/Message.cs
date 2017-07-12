@@ -32,6 +32,9 @@ namespace SlackWebApiClient.Models
         [JsonProperty("replies")]
         public IList<MessageReply> Replies { get; set; }
 
+        [JsonProperty("reactions")]
+        public IList<Reaction> Reactions { get; set; }
+
         [JsonProperty("reply_count")]
         public int ReplyCount { get; set; }
 

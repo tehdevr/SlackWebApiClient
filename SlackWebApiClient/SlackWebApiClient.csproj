@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\Methods\IReactions.cs" />
     <Compile Include="Methods\Channels.cs" />
     <Compile Include="Methods\Chat.cs" />
     <Compile Include="Methods\Groups.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Interfaces\Methods\IMpim.cs" />
     <Compile Include="Interfaces\Methods\IUsers.cs" />
     <Compile Include="Interfaces\Models\IResponse.cs" />
+    <Compile Include="Methods\Reactions.cs" />
     <Compile Include="Models\ChannelResponse.cs" />
     <Compile Include="Models\ChannelsResponse.cs" />
     <Compile Include="Models\GroupResponse.cs" />
@@ -67,6 +69,8 @@
     <Compile Include="Models\MessagesResponse.cs" />
     <Compile Include="Models\MpimsResponse.cs" />
     <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\Reaction.cs" />
+    <Compile Include="Models\ReactionsResponse.cs" />
     <Compile Include="Models\UserResponse.cs" />
     <Compile Include="Models\UsersResponse.cs" />
     <Compile Include="Methods\Mpim.cs" />

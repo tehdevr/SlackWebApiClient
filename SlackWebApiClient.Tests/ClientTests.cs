@@ -8,7 +8,7 @@ namespace SlackWebApiClient.Tests
     [TestClass]
     public class ClientTests
     {
-        private const string Token = "xoxp-3648074680-3648074682-208450605395-1a6cd7f7c7487ddaccb4972ca9b469c2";
+        private const string Token = "";
         private const string Url = "https://slack.com/api";
 
         [TestMethod]
