@@ -41,23 +41,15 @@ namespace SlackWebApiClient.Models
         [JsonProperty("mrkdwn_in")]
         public IList<string> MarkdownIn { get; set; }
 
-        public class Field
+        public Attachment()
         {
-            public Field(string title, string value, bool isShort = true)
-            {
-                Title = title;
-                Value = value;
-                Short = isShort;
-            }
+            Fields = new List<Field>();
+            MarkdownIn = new List<string>();
+        }
 
-            [JsonProperty("title")]
-            public string Title { get; set; }
-
-            [JsonProperty("value")]
-            public string Value { get; set; }
-
-            [JsonProperty("short")]
-            public bool Short { get; set; }
+        public void AddField(string title, string value, bool isShort = true)
+        {
+            Fields.Add(new Field(title, value, isShort));
         }
     }
 }

@@ -61,6 +61,7 @@
     <Compile Include="Methods\Reactions.cs" />
     <Compile Include="Models\ChannelResponse.cs" />
     <Compile Include="Models\ChannelsResponse.cs" />
+    <Compile Include="Models\Field.cs" />
     <Compile Include="Models\GroupResponse.cs" />
     <Compile Include="Models\GroupsResponse.cs" />
     <Compile Include="Models\ImsResponse.cs" />

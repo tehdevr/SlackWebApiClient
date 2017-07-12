@@ -15,29 +15,70 @@ namespace SlackWebApiClient.Methods
             _client = client;
         }
 
-        public Task<ChannelResponse> SetTopic(string channel, string topic)
+        public async Task<ChannelResponse> SetTopic(string channel, string topic)
         {
-            throw new System.NotImplementedException();
+            const string endpoint = "channels.leave";
+
+            var body = new Dictionary<string, string>
+            {
+                {"channel", channel},
+                {"topic", topic }
+            };
+
+            return await _client.Post<ChannelResponse>(endpoint, body);
         }
 
-        public Task<ChannelResponse> SetPurpose(string channel, string purpose)
+        public async Task<ChannelResponse> SetPurpose(string channel, string purpose)
         {
-            throw new System.NotImplementedException();
+            const string endpoint = "channels.leave";
+
+            var body = new Dictionary<string, string>
+            {
+                {"channel", channel},
+                {"purpose", purpose }
+            };
+
+            return await _client.Post<ChannelResponse>(endpoint, body);
         }
 
-        public Task<ChannelResponse> Rename(string channel, string name, bool? validate = null)
+        public async Task<ChannelResponse> Rename(string channel, string name, bool? validate = null)
         {
-            throw new System.NotImplementedException();
+            const string endpoint = "channels.leave";
+
+            var body = new Dictionary<string, string>
+            {
+                {"channel", channel},
+                {"name", name }
+            };
+
+            if(validate != null) body.Add("validate", validate.ToString());
+            
+            return await _client.Post<ChannelResponse>(endpoint, body);
         }
 
-        public Task<ChannelResponse> Kick(string channel, string user)
+        public async Task<ChannelResponse> Kick(string channel, string user)
         {
-            throw new System.NotImplementedException();
+            const string endpoint = "channels.kick";
+
+            var body = new Dictionary<string, string>
+            {
+                {"channel", channel},
+                {"user", user }
+            };
+
+            return await _client.Post<ChannelResponse>(endpoint, body);
         }
 
-        public Task<ChannelResponse> Leave(string channel)
+        public async Task<ChannelResponse> Leave(string channel)
         {
-            throw new System.NotImplementedException();
+            const string endpoint = "channels.leave";
+
+            var body = new Dictionary<string, string>
+            {
+                {"channel", channel}
+            };
+
+            return await _client.Post<ChannelResponse>(endpoint, body);
         }
 
         public async Task<ChannelsResponse> List()
@@ -49,19 +90,19 @@ namespace SlackWebApiClient.Methods
 
         public async Task<ChannelResponse> Info(string channel)
         {
-            var url = $"channels.info";
+            const string endpoint = "channels.info";
 
             var body = new Dictionary<string, string>
             {
                 {"channel", channel}
             };
 
-            return await _client.Post<ChannelResponse>(url, body);
+            return await _client.Post<ChannelResponse>(endpoint, body);
         }
 
         public async Task<ChannelResponse> Invite(string channel, string user)
         {
-            var url = $"channels.invite";
+            const string endpoint = "channels.invite";
 
             var body = new Dictionary<string, string>
             {
@@ -69,7 +110,7 @@ namespace SlackWebApiClient.Methods
                 {"user", user}
             };
 
-            return await _client.Post<ChannelResponse>(url, body);
+            return await _client.Post<ChannelResponse>(endpoint, body);
         }
     }
 }
