@@ -12,6 +12,7 @@ namespace SlackWebApiClient
         public Mpim Mpim { get; set; }
         public Users Users { get; set; }
         public Chat Chat { get; set; }
+        public Reactions Reactions { get; set; }
 
         public SlackApi(string token, string apiUrl = "https://slack.com/api")
         {
@@ -26,6 +27,7 @@ namespace SlackWebApiClient
             Mpim = new Mpim(client);
             Users = new Users(client);
             Chat = new Chat(client);
+            Reactions = new Reactions(client);
         }
     }
 }
