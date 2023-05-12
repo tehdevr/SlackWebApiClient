@@ -16,20 +16,21 @@ namespace SlackWebApiClient.Methods
             _client = client;
         }
 
-        public async Task<MessageResponse> PostMessage(
-            string channel,
-            string text,
-            string parse = "none",
-            bool? linkNames = null,
-            IList<Attachment> attachments = null,
-            bool? unfurlLinks = null,
-            bool? unfurlMedia = null,
-            string username = null,
-            bool? asUser = null,
-            string iconUrl = null,
-            string iconEmoji = null,
-            string threadTs = null,
-            bool? replyBroadcast = null)
+		public async Task<MessageResponse> PostMessage(
+			string channel,
+			string text,
+			string parse = "none",
+			bool? linkNames = null,
+			IList<Attachment> attachments = null,
+			bool? unfurlLinks = null,
+			bool? unfurlMedia = null,
+			string username = null,
+			bool? asUser = null,
+			string iconUrl = null,
+			string iconEmoji = null,
+			string threadTs = null,
+			bool? replyBroadcast = null,
+			IList<Block> blocks = null)
         {
             var url = $"chat.postMessage";
 
@@ -50,8 +51,9 @@ namespace SlackWebApiClient.Methods
             if (iconEmoji != null) body.Add("icon_emoji", iconEmoji);
             if (threadTs != null) body.Add("thread_ts", threadTs);
             if (replyBroadcast != null) body.Add("reply_broadcast", replyBroadcast.ToString());
+			if (blocks != null) body.Add("blocks", JsonConvert.SerializeObject(blocks));
 
-            return await _client.Post<MessageResponse>(url, body);
+			return await _client.Post<MessageResponse>(url, body);
         }
 
 
@@ -69,7 +71,8 @@ namespace SlackWebApiClient.Methods
             string iconUrl = null,
             string iconEmoji = null,
             string threadTs = null,
-            bool? replyBroadcast = null)
+            bool? replyBroadcast = null,
+			IList<Block> blocks = null)
         {
             var endpoint = $"chat.update";
 
