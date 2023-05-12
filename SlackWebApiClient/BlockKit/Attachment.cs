@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace SlackWebApiClient.Models
+namespace SlackWebApiClient.Blocks
 {
     public class Attachment
     {
@@ -40,6 +40,9 @@ namespace SlackWebApiClient.Models
 
         [JsonProperty("mrkdwn_in")]
         public IList<string> MarkdownIn { get; set; }
+
+		[JsonProperty("blocks")]
+		public IList<Block> Blocks { get; set; }
 
         public Attachment()
         {

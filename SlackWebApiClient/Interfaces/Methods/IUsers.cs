@@ -7,5 +7,7 @@ namespace SlackWebApiClient.Interfaces.Methods
     {
         Task<PresenceResponse> GetPresence(string user);
         Task<UserResponse> Info(string user);
+
+		Task<UserIdentityResponse> Identity(string userToken);
     }
 }

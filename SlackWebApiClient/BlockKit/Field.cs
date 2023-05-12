@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace SlackWebApiClient.Models
+namespace SlackWebApiClient.Blocks
 {
     public class Field
     {

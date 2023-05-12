@@ -10,7 +10,7 @@ namespace SlackWebApiClient.Models
         [JsonProperty("channel")]
         public string Channel { get; set; }
 
-        [JsonProperty("messages")]
+        [JsonProperty("message")]
         public Message Message { get; set; }
     }
 }

@@ -9,14 +9,19 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SlackWebApiClient</RootNamespace>
     <AssemblyName>SlackWebApiClient</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -30,12 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>C:\Users\Owner\source\Workspaces\PoGoWebRedo\Website\PoGoWebRedo\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,7 +49,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlockKit\Elements\Button.cs" />
+    <Compile Include="BlockKit\CompositionObjects\ConfirmationDialog.cs" />
+    <Compile Include="BlockKit\CompositionObjects\MarkdownText.cs" />
+    <Compile Include="BlockKit\CompositionObjects\Option.cs" />
+    <Compile Include="BlockKit\CompositionObjects\OptionGroup.cs" />
+    <Compile Include="BlockKit\CompositionObjects\OptionMrkdwn.cs" />
+    <Compile Include="BlockKit\CompositionObjects\PlainText.cs" />
+    <Compile Include="BlockKit\Elements\Checkboxes.cs" />
+    <Compile Include="BlockKit\Elements\ChannelsMenu.cs" />
+    <Compile Include="BlockKit\Elements\ChannelsMenuMS.cs" />
+    <Compile Include="BlockKit\Elements\TimePicker.cs" />
+    <Compile Include="BlockKit\Elements\DatePicker.cs" />
+    <Compile Include="BlockKit\Blocks\HeaderBlock.cs" />
+    <Compile Include="BlockKit\Elements\ConversationsMenu.cs" />
+    <Compile Include="BlockKit\Elements\ConversationsMenuMS.cs" />
+    <Compile Include="BlockKit\Elements\UserMenuMS.cs" />
+    <Compile Include="BlockKit\Elements\UserMenu.cs" />
+    <Compile Include="BlockKit\Elements\ExternalMenuMS.cs" />
+    <Compile Include="BlockKit\Elements\Image.cs" />
+    <Compile Include="BlockKit\Blocks\InputBlock.cs" />
+    <Compile Include="BlockKit\Elements\InputElement.cs" />
+    <Compile Include="BlockKit\Elements\PlainTextInput.cs" />
+    <Compile Include="BlockKit\Elements\OverflowMenu.cs" />
+    <Compile Include="BlockKit\Elements\RadioButtonGroup.cs" />
+    <Compile Include="BlockKit\Elements\ExternalMenu.cs" />
+    <Compile Include="BlockKit\Elements\StaticMenuMS.cs" />
+    <Compile Include="BlockKit\Elements\StaticMenu.cs" />
+    <Compile Include="Interfaces\Methods\IAuth.cs" />
+    <Compile Include="Interfaces\Methods\IConversations.cs" />
+    <Compile Include="Interfaces\Methods\IOAuth.cs" />
     <Compile Include="Interfaces\Methods\IReactions.cs" />
+    <Compile Include="Interfaces\Methods\IViews.cs" />
+    <Compile Include="Methods\Auth.cs" />
+    <Compile Include="Methods\Conversations.cs" />
+    <Compile Include="Methods\OAuth.cs" />
     <Compile Include="Methods\Channels.cs" />
     <Compile Include="Methods\Chat.cs" />
     <Compile Include="Methods\Groups.cs" />
@@ -59,12 +98,27 @@
     <Compile Include="Interfaces\Methods\IUsers.cs" />
     <Compile Include="Interfaces\Models\IResponse.cs" />
     <Compile Include="Methods\Reactions.cs" />
-    <Compile Include="Models\Block.cs" />
     <Compile Include="Models\BlockElement.cs" />
     <Compile Include="Models\ChannelResponse.cs" />
     <Compile Include="Models\ChannelsResponse.cs" />
     <Compile Include="Models\CompositionObject.cs" />
-    <Compile Include="Models\Field.cs" />
+    <Compile Include="BlockKit\Blocks\ActionsBlock.cs" />
+    <Compile Include="BlockKit\Blocks\Block.cs" />
+    <Compile Include="Methods\Views.cs" />
+    <Compile Include="Models\AuthResponse.cs" />
+    <Compile Include="BlockKit\Blocks\ContextBlock.cs" />
+    <Compile Include="BlockKit\Blocks\DividerBlock.cs" />
+    <Compile Include="BlockKit\Blocks\ImageBlock.cs" />
+    <Compile Include="BlockKit\Blocks\SectionBlock.cs" />
+    <Compile Include="Models\ConversationsResponse.cs" />
+    <Compile Include="Models\MessageAction.cs" />
+    <Compile Include="Models\ModalView.cs" />
+    <Compile Include="Models\ModalViewSubmission.cs" />
+    <Compile Include="Models\PermalinkResponse.cs" />
+    <Compile Include="Models\OAuthResponse.cs" />
+    <Compile Include="Models\ChannelResponse.cs" />
+    <Compile Include="Models\ChannelsResponse.cs" />
+    <Compile Include="BlockKit\Field.cs" />
     <Compile Include="Models\GroupResponse.cs" />
     <Compile Include="Models\GroupsResponse.cs" />
     <Compile Include="Models\ImsResponse.cs" />
@@ -75,11 +129,18 @@
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Reaction.cs" />
     <Compile Include="Models\ReactionsResponse.cs" />
+    <Compile Include="Models\ResponseActions.cs" />
+    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\UserIdentityResponse.cs" />
     <Compile Include="Models\UserResponse.cs" />
     <Compile Include="Models\UsersResponse.cs" />
     <Compile Include="Methods\Mpim.cs" />
+    <Compile Include="Models\ViewsOpenResponse.cs" />
+    <Compile Include="Models\ViewsOpenResponseView.cs" />
+    <Compile Include="Models\ViewSubmissionRequest.cs" />
+    <Compile Include="Models\ViewSubmissionResponse.cs" />
     <Compile Include="SlackApi.cs" />
-    <Compile Include="Models\Attachment.cs" />
+    <Compile Include="BlockKit\Attachment.cs" />
     <Compile Include="Models\Channel.cs" />
     <Compile Include="Models\ChannelBase.cs" />
     <Compile Include="Models\Group.cs" />
@@ -91,6 +152,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Methods\Users.cs" />
+    <Compile Include="SlackUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
