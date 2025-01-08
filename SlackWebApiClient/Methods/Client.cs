@@ -70,6 +70,9 @@ namespace SlackWebApiClient.Methods
                     _httpClient.DefaultRequestHeaders.Authorization = null;
                 }
 
+                // Set the SSL/TLS version
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+
                 StringContent jsonContent = new StringContent(jsonBody, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = _httpClient.PostAsync(url, jsonContent).Result;
                 responseData = await response.Content.ReadAsStringAsync();
@@ -104,6 +107,9 @@ namespace SlackWebApiClient.Methods
                 {
                     content = new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("token", _token) };
                 }
+
+                // Set the SSL/TLS version
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
 
                 var response = _httpClient.PostAsync(url, new FormUrlEncodedContent(content)).Result;
                 result = JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
@@ -141,6 +147,10 @@ namespace SlackWebApiClient.Methods
             {
                 Content = new FormUrlEncodedContent(parms)
             };
+
+            // Set the SSL/TLS version
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+
             string basicCreds = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{clientID}:{clientSecret}"));
             req.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", basicCreds);
             var clientResponse = await _httpClient.SendAsync(req).ConfigureAwait(false);
@@ -165,6 +175,9 @@ namespace SlackWebApiClient.Methods
                 query.Append($"{pre}{item.Key}={HttpUtility.UrlEncode(item.Value)}");
                 pre = "&";
             }
+
+            // Set the SSL/TLS version
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
 
             var clientResponse = await _httpClient.GetStringAsync($"{url}{query}").ConfigureAwait(false);
             result = JsonConvert.DeserializeObject<T>(clientResponse);

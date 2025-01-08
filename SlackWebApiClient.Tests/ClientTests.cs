@@ -29,44 +29,46 @@ namespace SlackWebApiClient.Tests
             Assert.AreEqual(api.Url, _url);
         }
 
-        [TestMethod]
-        public async Task GetChannelsList_ReturnsList()
-        {
-            var api = new SlackApi(_token);
+        // TODO: Update tests to use Conversations instead of Channels
 
-            var channels = await api.Channels.List();
+        //[TestMethod]
+        //public async Task GetChannelsList_ReturnsList()
+        //{
+        //    var api = new SlackApi(_token);
 
-            Assert.IsNotNull(channels);
-            Assert.IsNotNull(channels.Channels);
-            Assert.IsTrue(channels.Channels.Count > 0);
-        }
+        //    var channels = await api.Channels.List();
 
-        [TestMethod]
-        public async Task GetChannelsInfo_ReturnsInfo()
-        {
-            var api = new SlackApi(_token);
+        //    Assert.IsNotNull(channels);
+        //    Assert.IsNotNull(channels.Channels);
+        //    Assert.IsTrue(channels.Channels.Count > 0);
+        //}
 
-            var channel = await api.Channels.Info("C03K226LE");
+        //[TestMethod]
+        //public async Task GetChannelsInfo_ReturnsInfo()
+        //{
+        //    var api = new SlackApi(_token);
 
-            Assert.IsNotNull(channel);
-            Assert.IsNotNull(channel.Channel);
+        //    var channel = await api.Channels.Info("C03K226LE");
 
-            Assert.AreEqual(channel.Channel.Name, "general", "channel name == general");
-            Assert.IsTrue(channel.Channel.Members.Count > 0, "channel.Channel.Members.Count > 0");
-        }
+        //    Assert.IsNotNull(channel);
+        //    Assert.IsNotNull(channel.Channel);
 
-        [TestMethod]
-        public async Task GetGroupsInfo_ReturnsInfo()
-        {
-            var api = new SlackApi(_token);
+        //    Assert.AreEqual(channel.Channel.Name, "general", "channel name == general");
+        //    Assert.IsTrue(channel.Channel.Members.Count > 0, "channel.Channel.Members.Count > 0");
+        //}
 
-            var channel = await api.Groups.Info("G151SK5PB");
+        //[TestMethod]
+        //public async Task GetGroupsInfo_ReturnsInfo()
+        //{
+        //    var api = new SlackApi(_token);
 
-            Assert.IsNotNull(channel);
-            Assert.IsNotNull(channel.Group);
+        //    var channel = await api.Groups.Info("G151SK5PB");
 
-            Assert.AreEqual(channel.Group.Name, "api_testing", "channel name == api_testing");
-            Assert.IsTrue(channel.Group.Members.Count > 0, "channel.Channel.Members.Count > 0");
-        }
+        //    Assert.IsNotNull(channel);
+        //    Assert.IsNotNull(channel.Group);
+
+        //    Assert.AreEqual(channel.Group.Name, "api_testing", "channel name == api_testing");
+        //    Assert.IsTrue(channel.Group.Members.Count > 0, "channel.Channel.Members.Count > 0");
+        //}
     }
 }

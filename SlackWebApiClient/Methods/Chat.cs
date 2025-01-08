@@ -74,9 +74,13 @@ namespace SlackWebApiClient.Methods
             //if (asUser != null) body.Add("as_user", asUser.ToString());
 
             // Do the post
+
+
             return await _client.PostJson<MessageResponse>(url, body);
+            
         }
 
+        
 
         public async Task<MessageResponse> PostEphemeral(
             string channel,
